@@ -23,7 +23,7 @@ int main()
             {
                 sword = 0;
             }
-        if (lastc == ' ' && (rand() & 7) == 1) // this will randomly make s-stutters
+        if (lastc == ' ' && (rand() & 7) == 1 && c != ' ') // this will randomly make s-stutters
         {
             putchar(c);
             putchar('-');
