@@ -1,4 +1,12 @@
 # uwuifyer
 A short C program to UWUify a string of text.
 
-It currently puts a ~ at the end of a word that ends in a, replaces r and l with w, y after a n in a word, and puts uwu in words where applicable.
+|How To Use|
+
+(this was made in and for linux so right now I dont have any instructions for windows.)
+It will take whatever you pipe into it and give you the uwued output.
+
+Example:
+echo "this would be the text you want to be uwued." | ./uwu
+and the output will be something like this
+this wouwuwd be t-the text youwu want to be uwuwued.
