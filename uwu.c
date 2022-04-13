@@ -3,12 +3,39 @@
 #include <time.h>
 // stdlib and time is needed for the s-stuttering
 
+// Known issues :
+// I need to change some of the ifs to switches
+// I also need to make a way to input something without pipes
+
 int c, lastc, sword = 0;
 // c is the current char.
 // lastc is the previous char.
 // sword is used to track if its on the same word, this is used to determine if a word should be modified.
-int main()
+int main(int argc, char *argv[])
 {
+    while ((++argv)[0])
+    {
+            if (argv[0][0] == '-' )
+            {
+                    switch (argv[0][1])  {
+
+                            default:
+                                    printf("Unknown option -%c\n\n", argv[0][1]);
+                                    exit(0);
+                                    break;
+                            case 'H':
+                            case 'h':
+                                    printf("Usage: uwu <args>\n    -h Displays this menu\n    -v Displays version\n");
+                                    exit(0);
+                                    break;
+                            case 'V':
+                            case 'v':
+                                    printf("1.0.2\n");
+                                    exit(0);
+                                    break;
+                    }
+            }
+    }
     time_t t;
     srand((unsigned) time (&t));
     for (; (c = getchar()) != EOF; lastc = c)
@@ -44,7 +71,7 @@ int main()
                 putchar('w');
                 putchar('u');
                 sword = 1;
-            } else if (c == ' ') // puts '~' after an 'a' in a word that ends in 'a'.
+            } else if (c == ' ' || c == '\n') // puts '~' after an 'a' in a word that ends in 'a'.
             {
                 if (lastc == 'a')
                 {
