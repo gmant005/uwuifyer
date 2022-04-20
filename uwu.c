@@ -4,34 +4,38 @@
 // stdlib and time is needed for the s-stuttering
 
 // Known issues :
-// I need to change some of the ifs to switches
+// I need to change some of the ifs to switches / make everything better.
 // I also need to make a way to input something without pipes
 
-int c, lastc, sword = 0;
+int c, lastc, sword = 0, F = 0;
 // c is the current char.
 // lastc is the previous char.
 // sword is used to track if its on the same word, this is used to determine if a word should be modified.
 int main(int argc, char *argv[])
 {
-    while ((++argv)[0])
+    while ((++argv)[0]) // this will get any flags/arguments.
     {
             if (argv[0][0] == '-' )
             {
                     switch (argv[0][1])  {
 
                             default:
-                                    printf("Unknown option -%c\n\n", argv[0][1]);
+                                    printf("Unknown option -%c uwu -h for help\n\n", argv[0][1]); // if you put an invalid argument
                                     exit(0);
                                     break;
                             case 'H':
                             case 'h':
-                                    printf("Usage: uwu <args>\n    -h Displays this menu\n    -v Displays version\n");
+                                    printf("Function:\n    The output of the command you pipe into here will be uwued.\nUsage: uwu <args>\n    -h Displays this menu\n    -v Displays version\n    -f Adds faces\n"); // the help menu
                                     exit(0);
                                     break;
                             case 'V':
                             case 'v':
-                                    printf("1.0.2\n");
+                                    printf("1.0.2\n"); //version
                                     exit(0);
+                                    break;
+                            case 'F':
+                            case 'f':
+                                    F = 1;
                                     break;
                     }
             }
@@ -54,6 +58,30 @@ int main(int argc, char *argv[])
         {
             putchar(c);
             putchar('-');
+        }
+        if (c == '.' && lastc != '.' && F == 1) // checks if F is on and if c is .
+        {
+            int ran = (rand() % 5);
+            switch(rand() % 5) // makes a random face.
+            {
+                case 1 :
+                    printf(" (˘ω˘)");
+                    break;
+                case 2 :
+                    printf(" (◡ ω ◡)");
+                    break;
+                case 3 :
+                    printf(" (UᵕU❁)");
+                    break;
+                case 4 :
+                    printf(" (Φ ω Φ)");
+                    break;
+                case 0 :
+                    printf(" (≅ᆽ≅)");
+                    break;
+                default :
+                    break;
+            }
         }
         if (sword == 0) // if the word hasnt been modified yet it will allow it to be modified.
         {
