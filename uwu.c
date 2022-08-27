@@ -11,9 +11,11 @@ int c, lastc, sword = 0, F = 0;
 // c is the current char.
 // lastc is the previous char.
 // sword is used to track if its on the same word, this is used to determine if a word should be modified.
-int main(int argc, char *argv[])
-{
-    while ((++argv)[0]) // this will get any flags/arguments.
+
+void uwuify();
+
+void FlagCheck(char *argv[]) {
+  while ((++argv)[0]) // this will get any flags/arguments.
     {
             if (argv[0][0] == '-' )
             {
@@ -30,7 +32,7 @@ int main(int argc, char *argv[])
                                     break;
                             case 'V':
                             case 'v':
-                                    printf("1.0.2\n"); //version
+                                    printf("1.0.3\n"); //version
                                     exit(0);
                                     break;
                             case 'F':
@@ -40,6 +42,17 @@ int main(int argc, char *argv[])
                     }
             }
     }
+}
+
+
+int main(int argc, char *argv[])
+{
+    FlagCheck(argv);
+    uwuify();
+}
+
+void uwuify(){
+
     time_t t;
     srand((unsigned) time (&t));
     for (; (c = getchar()) != EOF; lastc = c)
@@ -49,11 +62,10 @@ int main(int argc, char *argv[])
             c =(c == 'r' || c == 'l' ? 'w' : c);
             c =(c == 'R' || c == 'L' ? 'W' : c);
         }
-
         if (c == ' ' || c == '\n' ) // checks if its on a space to determine if its at the end of a word. This is used to prevent over uwuing.
-            {
-                sword = 0;
-            }
+        {
+            sword = 0;
+        }
         if (lastc == ' ' && (rand() & 7) == 1 && c != ' ') // this will randomly make s-stutters
         {
             putchar(c);
@@ -113,20 +125,12 @@ int main(int argc, char *argv[])
             {
                 putchar(c);
             }
-/*            if (c == 'o') // for extra owo uncomment this. its a bad idea. you will also have to change some stuff to make it work.
-            {
-                putchar(c);
-                putchar('w');
-                putchar('o');
-                sword = 1;
-            } else {
-                putchar(c);
-            }
-*/        } else // this puts a char is the previous condition doesnt apply, So typpicly when the word has already been modified.
+        } else // this puts a char is the previous condition doesnt apply, So typpicly when the word has already been modified.
         {
         putchar(c);
         }
 
     }
+
 
 }
